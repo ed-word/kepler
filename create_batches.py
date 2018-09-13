@@ -41,3 +41,4 @@ if __name__ == '__main__':
             f.write('rm -rf ' + batch_name + '\n')
             f.write('cd ../' + '\n')
             f.write('grive -s zip/' + batch_name + '.zip' + '\n')
+            f.write('rm zip/' + batch_name + '.zip' + '\n')
