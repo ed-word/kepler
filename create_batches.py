@@ -20,7 +20,21 @@ if __name__ == '__main__':
     for i, b in enumerate(batches):
         batch_name = 'batch' + str(i)
         with open('links/' + batch_name + '.sh', 'w') as f:
-            f.write('mkdir ' + 'data/' + batch_name + '\n')
-            for line in b:
-                line = line.replace('BATCH_NAME', batch_name)
+            f.write('mkdir -p ' + 'data/' + batch_name + '\n')
+            f.write('cd data/' + batch_name + '\n\n')
+
+            one_percent = int(len(b) / 100)
+            if not one_percent:
+                one_percent = 1
+            for i, line in enumerate(b):
+                if (i % one_percent == 0):
+                    f.write(
+                        'echo "' +
+                        str(float(100) - float(i*100/len(b))) +
+                        '% left"\n\n'
+                    )
                 f.write(line)
+
+            f.write('echo "Completed"\n\n')
+            f.write('zip -r ../../zip/' + batch_name + '.zip' + ' *' + '\n')
+            f.write('cd ../../')
