@@ -22,4 +22,4 @@ cmake ..
 make -j4
 sudo make install
 
-grive -a zip
+grive -a -s zip
