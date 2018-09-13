@@ -37,5 +37,7 @@ if __name__ == '__main__':
 
             f.write('echo "Completed"\n\n')
             f.write('zip -r ../../zip/' + batch_name + '.zip' + ' *' + '\n')
-            f.write('cd ../../\n')
+            f.write('cd ../\n')
+            f.write('rm -rf ' + batch_name + '\n')
+            f.write('cd ../' + '\n')
             f.write('grive -s zip/' + batch_name + '.zip' + '\n')
