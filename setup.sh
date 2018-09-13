@@ -1,5 +1,9 @@
 #!/bin/bash
 
+mkdir -p data
+mkdir -p links
+mkdir -p zip
+
 sudo apt update
 sudo apt upgrade
 
